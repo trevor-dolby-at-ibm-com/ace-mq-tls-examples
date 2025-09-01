@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policies>
+  <policy policyType="MQEndpoint" policyName="MQviaSwitch" policyTemplate="MQEndpoint">
+    <connection>CLIENT</connection>
+    <destinationQueueManagerName>ACEv13_QM</destinationQueueManagerName>
+    <queueManagerHostname>localhost</queueManagerHostname>
+    <listenerPortNumber>23456</listenerPortNumber>
+    <channelName>ACE.SVRCONN</channelName>
+    <CCDTUrl></CCDTUrl>
+    <securityIdentity></securityIdentity>
+    <useSSL>true</useSSL>
+    <SSLPeerName></SSLPeerName>
+    <SSLCipherSpec>ANY_TLS13_OR_HIGHER</SSLCipherSpec>
+    <SSLCertificateLabel>CN=aceclient,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US</SSLCertificateLabel>
+    <MQApplName></MQApplName>
+    <reconnectOption>default</reconnectOption>
+  </policy>
+</policies>

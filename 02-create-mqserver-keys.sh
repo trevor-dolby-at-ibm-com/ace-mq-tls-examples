@@ -5,6 +5,7 @@ set -e
 # Log everything
 set -x
 
+# CN=mqserver,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US
 mkdir generated-output/mqserver-keys
 openssl req -newkey rsa:4096 -subj "/C=US/ST=MN/L=Minneapolis/O=IBM/OU=ExpertLabs/CN=mqserver"  -keyout generated-output/mqserver-keys/qm.key -out generated-output/mqserver-keys/qm.csr -passout pass:changeit
 

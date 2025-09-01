@@ -5,6 +5,7 @@ set -e
 # Log everything
 set -x
 
+# CN=aceclient,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US 
 mkdir generated-output/aceclient-keys
 openssl req -newkey rsa:4096 -subj "/C=US/ST=MN/L=Minneapolis/O=IBM/OU=ExpertLabs/CN=aceclient"  -keyout generated-output/aceclient-keys/aceclient.key -out generated-output/aceclient-keys/aceclient.csr -passout pass:changeit
 

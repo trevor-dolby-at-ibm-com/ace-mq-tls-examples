@@ -1,0 +1,9 @@
+alter qmgr SSLKEYR('c:\Users\TrevorDolby\github.com\ace-mq-tls-examples\generated-output\mq-kdb\qm') CERTLABL('CN=mqserver,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US')
+
+alter qmgr CONNAUTH(' ')
+SET CHLAUTH('ACE.SVRCONN') TYPE(SSLPEERMAP) SSLPEER('CN=aceclient,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US') MCAUSER('MUSR_MQADMIN') CHCKCLNT(ASQMGR)
+SET CHLAUTH('*') TYPE(BLOCKUSER) ACTION(REPLACE) DESCR('Rule to disallow privileged - switched to WARN for testing') USERLIST('*MQADMIN') WARN(YES)
+
+def chl('ACE.SVRCONN') CHLTYPE(SVRCONN) SSLCAUTH(REQUIRED) SSLCIPH('ANY_TLS13_OR_HIGHER') MCAUSER('MUSR_MQADMIN') CERTLABL('CN=mqserver,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US') SSLPEER('CN=aceclient,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US')
+
+def ql(DEMO.QUEUE)

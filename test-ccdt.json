@@ -1,0 +1,22 @@
+{
+  "channel": [
+    {
+      "name": "ACE.SVRCONN",
+      "clientConnection": {
+        "connection": [
+          {
+            "host": "10.0.0.3",
+            "port": 1414
+          }
+        ],
+        "queueManager": "ACEv13_QM"
+      },
+      "transmissionSecurity":
+      {
+        "cipherSpecification": "TLS_AES_128_GCM_SHA256",
+        "certificateLabel": "CN=aceclient,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US"
+      },
+      "type": "clientConnection"
+    }
+  ]
+}
