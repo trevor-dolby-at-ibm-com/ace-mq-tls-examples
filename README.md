@@ -18,6 +18,11 @@ works with server.conf.yaml of
 BrokerRegistry:
   mqKeyRepository: '/home/tdolby/github.com/ace-mq-tls-examples/generated-output/ace-p12/aceclient-plus-CA2.p12'
 ```
+and setting the env var in server.conf.yaml also works:
+```
+EnvironmentVariables:
+  MQKEYRPWD: 'changeit'
+```
 
 Remote default via the switch requires
 ```
@@ -25,6 +30,19 @@ ResourceManagers:
   MQConnectionManager:
     delayInitialMQConnection: true
 ```
+
+For IWHI:
+ - tdolby-mq-via-switch PNA with [switchclient-cloud.json](/switchclient-cloud.json) contents
+ - tdolby-mq-via-switch.p12 created from `generated-output/ace-p12/aceclient-plus-CA2.p12`
+ - tdolby-mq-via-switch-policy created from [DefaultPolicies](/DefaultPolicies)
+ - tdolby-mq-via-switch-scy containing
+```
+BrokerRegistry:
+  mqKeyRepository: '/home/aceuser/keystores/tdolby-mq-via-switch.p12'
+EnvironmentVariables:
+  MQKEYRPWD: 'changeit'
+```
+
 
 ## Notes on what can go wrong:
 
