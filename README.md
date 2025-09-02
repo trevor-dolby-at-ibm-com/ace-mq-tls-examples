@@ -2,6 +2,7 @@
 ACE with MQ and TLS in various form factors
 
 ## Notes
+Using `-legacy` on openssl pkcs12 due to compatibility issues with older MQ versions.
 
 MQ KDB fileswork as expected with 
 ```
@@ -16,7 +17,7 @@ MQKEYRPWD=changeit IntegrationServer -w ~/tmp/ace-mq-tls-examples-work-dir
 works with server.conf.yaml of 
 ```
 BrokerRegistry:
-  mqKeyRepository: '/home/tdolby/github.com/ace-mq-tls-examples/generated-output/ace-p12/aceclient-plus-CA2.p12'
+  mqKeyRepository: '/home/tdolby/github.com/ace-mq-tls-examples/generated-output/ace-p12/aceclient-plus-CA1.p12'
 ```
 and setting the env var in server.conf.yaml also works:
 ```
@@ -33,7 +34,7 @@ ResourceManagers:
 
 For IWHI:
  - tdolby-mq-via-switch PNA with [switchclient-cloud.json](/switchclient-cloud.json) contents
- - tdolby-mq-via-switch.p12 created from `generated-output/ace-p12/aceclient-plus-CA2.p12`
+ - tdolby-mq-via-switch.p12 created from `generated-output/ace-p12/aceclient-plus-CA1.p12`
  - tdolby-mq-via-switch-policy created from [DefaultPolicies](/DefaultPolicies)
  - tdolby-mq-via-switch-scy containing
 ```
