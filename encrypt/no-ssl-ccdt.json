@@ -1,0 +1,17 @@
+{
+  "channel": [
+    {
+      "name": "ACE.SVRCONN",
+      "clientConnection": {
+        "connection": [
+          {
+            "host": "localhost",
+            "port": 23456
+          }
+        ],
+        "queueManager": "ACEv13_QM"
+      },
+      "type": "clientConnection"
+    }
+  ]
+}

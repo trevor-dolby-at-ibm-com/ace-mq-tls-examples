@@ -17,7 +17,7 @@ MQKEYRPWD=changeit IntegrationServer -w ~/tmp/ace-mq-tls-examples-work-dir
 works with server.conf.yaml of 
 ```
 BrokerRegistry:
-  mqKeyRepository: '/home/tdolby/github.com/ace-mq-tls-examples/generated-output/ace-p12/aceclient-plus-CA1.p12'
+  mqKeyRepository: '/home/tdolby/github.com/ace-mq-tls-examples/generated-output/ace-p12/aceclient-plus-CA2.p12'
 ```
 and setting the env var in server.conf.yaml also works:
 ```
@@ -43,6 +43,10 @@ BrokerRegistry:
 EnvironmentVariables:
   MQKEYRPWD: 'changeit'
 ```
+
+https://www.ibm.com/docs/en/ibm-mq/9.4.x?topic=variables-environment-descriptions#q082720___MQSSLKEYR
+
+https://www.ibm.com/docs/en/ibm-mq/9.3.x?topic=mq-mqcsp-password-protection
 
 
 ## Notes on what can go wrong:
