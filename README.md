@@ -3,7 +3,17 @@ ACE with MQ and TLS in various form factors
 
 ## Overview
 
+Three TLS connections:
+
 ![ace-mq-switch-tunnel-light](/pictures/ace-mq-switch-tunnel-light.png#gh-light-mode-only)![ace-mq-switch-tunnel-dark](/pictures/ace-mq-switch-tunnel-dark.png#gh-dark-mode-only)
+
+ACE and MQ with one TLS connection:
+
+![ace-mq-light](/pictures/ace-mq-light.png#gh-light-mode-only)![ace-mq-dark](/pictures/ace-mq-dark.png#gh-dark-mode-only)
+
+Switch clients and servers with two TLS connections:
+
+![switch-tunnel-light](/pictures/switch-tunnel-light.png#gh-light-mode-only)![switch-tunnel-dark](/pictures/switch-tunnel-dark.png#gh-dark-mode-only)
 
 
 ## Notes
