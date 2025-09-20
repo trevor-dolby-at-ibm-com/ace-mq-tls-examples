@@ -31,6 +31,14 @@ The main focus of this repo is on the ACE and MQ part of the picture, with the a
 the usual way by the cloud service. The tunnel endpoints do need configuring, and that configuration has to match the
 ACE and MQ configuration, but none of the configuration requires changing the TLS aspects of the switch clients.
 
+## Config
+
+Uses `DEMO.QUEUE` for the ConsumeMQ application.
+
+```
+echo "<abc/>" | amqsput DEMO.QUEUE ACEv13_QM
+```
+
 ## Notes
 Using `-legacy` on openssl pkcs12 due to compatibility issues with older MQ versions.
 
@@ -107,6 +115,17 @@ SET CHLAUTH('ACE.SVRCONN') TYPE(SSLPEERMAP) SSLPEER('CN=aceclient,OU=ExpertLabs,
 
 SET CHLAUTH('*') TYPE(BLOCKUSER) ACTION(REPLACE) DESCR('Rule to disallow privileged - switched to WARN for testing') USERLIST('*MQADMIN') WARN(YES)
 
+```
+tdolby@IBM-7NGKB54:/$ /opt/mqm/bin/dspmqver
+Name:        IBM MQ
+Version:     9.4.3.0
+Level:       p943-L250527
+BuildType:   IKAP - (Production)
+Platform:    IBM MQ for Linux (x86-64 platform)
+Mode:        64-bit
+O/S:         Linux 6.6.87.2-microsoft-standard-WSL2
+O/S Details: Ubuntu 24.04.3 LTS (Noble Numbat)
+```
 
 **Not specifying MQKEYRPWD or MQSSLKEYR**
 
@@ -119,4 +138,37 @@ tdolby@IBM-7NGKB54:~/github.com/perf-harness$ mqrc 2381
 
 Needs `MQKEYRPWD=changeit  MQSSLKEYR=/home/tdolby/github.com/ace-mq-tls-examples/generated-output/ace-p12/aceclient-plus-CA2.p12`
 
+
+**Incorrect keyring password**
+**Incorrect keyring filename**
+tdolby@IBM-7NGKB54:/$ MQKEYRPWD=wrong  MQSSLKEYR=/home/tdolby/github.com/ace-mq-tls-examples/generated-output/ace-p12/aceclient-plus-CA2.p12  M
+QCCDTURL=file:/home/tdolby/github.com/ace-mq-tls-examples/test-ccdt.json /opt/mqm/samp/bin/amqsgetc DEMO.QUEUE ACEv13_QM
+Sample AMQSGET0 start
+MQCONNX ended with reason code 2381
+
+**Invalid CCDT file location**
+tdolby@IBM-7NGKB54:/$ MQKEYRPWD=changeit  MQSSLKEYR=/home/tdolby/github.com/ace-mq-tls-examples/generated-output/ace-p12/aceclient-plus-CA2.p12  MQCCDTURL=file:/home/tdolby/github.com/ace-mq-tls-examples/test-ccdt.wrong /opt/mqm/samp/bin/amqsgetc DEMO.QUEUE ACEv13_QM
+Sample AMQSGET0 start
+AMQ9795E: The client channel definition could not be retrieved from its URL,
+error code (103).
+MQCONNX ended with reason code 2058
+
+**Incorrect host or port**
+tdolby@IBM-7NGKB54:/$ MQKEYRPWD=changeit  MQSSLKEYR=/home/tdolby/github.com/ace-mq-tls-examples/generated-output/ace-p12/aceclient-plus-CA2.p12  MQCCDTURL=file:/home/tdolby/github.com/ace-mq-tls-examples/test-ccdt.json /opt/mqm/samp/bin/amqsgetc DEMO.QUEUE ACEv13_QM
+Sample AMQSGET0 start
+MQCONNX ended with reason code 2538
+
+**Mismatch between QM name on command line and CCDT**
+tdolby@IBM-7NGKB54:/$ MQKEYRPWD=changeit  MQSSLKEYR=/home/tdolby/github.com/ace-mq-tls-examples/generated-output/ace-p12/aceclient-plus-CA2.p12  MQCCDTURL=file:/home/tdolby/github.com/ace-mq-tls-examples/test-ccdt.json /opt/mqm/samp/bin/amqsgetc DEMO.QUEUE WRONG
+Sample AMQSGET0 start
+MQCONNX ended with reason code 2058
+
+**Incorrect certificateLabel in CCDT**
+**Invalid cipherSpecification in CCDT**
+**Missing transmissionSecurity section in CCDT**
+**SSLPEERNAME mismatch on server end**
+**Missing server public key**
+tdolby@IBM-7NGKB54:/$ MQKEYRPWD=changeit  MQSSLKEYR=/home/tdolby/github.com/ace-mq-tls-examples/generated-output/ace-p12/aceclient-plus-CA2.p12  MQCCDTURL=file:/home/tdolby/github.com/ace-mq-tls-examples/test-ccdt.json /opt/mqm/samp/bin/amqsgetc DEMO.QUEUE ACEv13_QM
+Sample AMQSGET0 start
+MQCONNX ended with reason code 2393
 
