@@ -172,3 +172,4 @@ tdolby@IBM-7NGKB54:/$ MQKEYRPWD=changeit  MQSSLKEYR=/home/tdolby/github.com/ace-
 Sample AMQSGET0 start
 MQCONNX ended with reason code 2393
 
+
