@@ -91,18 +91,18 @@ https://www.ibm.com/docs/en/ibm-mq/9.3.x?topic=mq-mqcsp-password-protection
 
 
 **Happened because admin privileges were needed**
-
+```
 def chl('ACE.SVRCONN') CHLTYPE(SVRCONN) SSLCAUTH(OPTIONAL) SSLCIPH('ANY_TLS13_OR_HIGHER') MCAUSER('mqm')
      4 : def chl('ACE.SVRCONN') CHLTYPE(SVRCONN) SSLCAUTH(OPTIONAL) SSLCIPH('ANY_TLS13_OR_HIGHER') MCAUSER('mqm')
 8/29/2025 19:53:27 Unable to access the configuration data.
 Unable to access the configuration data.
 AMQ8242E: SSLCIPH definition wrong.
-
+```
 
 
 
 **Connection auth issues**
-
+```
 delete chl('ACE.SVRCONN')
 def chl('ACE.SVRCONN') CHLTYPE(SVRCONN) SSLCAUTH(REQUIRED) SSLCIPH('ANY_TLS13_OR_HIGHER') MCAUSER('MUSR_MQADMIN') CERTLABL('CN=mqserver,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US') SSLPEER('CN=aceclient,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US')
 
@@ -114,7 +114,8 @@ DISPLAY CHLAUTH('ACE.SVRCONN') MATCH(RUNCHECK) ALL CLNTUSER('tdolby') ADDRESS(10
 SET CHLAUTH('ACE.SVRCONN') TYPE(SSLPEERMAP) SSLPEER('CN=aceclient,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US') MCAUSER('MUSR_MQADMIN') CHCKCLNT(ASQMGR) DESCRIPTION('Allow ACE.SVRCONN with mTLS for testing')
 
 SET CHLAUTH('*') TYPE(BLOCKUSER) ACTION(REPLACE) DESCR('Rule to disallow privileged - switched to WARN for testing') USERLIST('*MQADMIN') WARN(YES)
-
+```
+using version
 ```
 tdolby@IBM-7NGKB54:/$ /opt/mqm/bin/dspmqver
 Name:        IBM MQ
