@@ -1,0 +1,39 @@
+apiVersion: mq.ibm.com/v1beta1
+kind: QueueManager
+metadata:
+  name: cp4iqm
+  annotations:
+    com.ibm.mq/write-defaults-spec: 'false'
+  namespace: cp4i
+spec:
+  license:
+    accept: true
+    license: L-JNME-56SJTB
+    use: NonProduction
+  pki:
+    keys:
+      - secret:
+          items:
+            - tls.key
+            - tls.crt
+            - ca.crt
+          secretName: mqserver-tls-secret
+        name: mqserverkey
+  web:
+    enabled: false
+  queueManager:
+    ini:
+      - configMap:
+          items:
+            - mq-tls.ini
+          name: mq-tls-configmap
+    mqsc:
+      - configMap:
+          items:
+            - mq-tls.mqsc
+          name: mq-tls-configmap
+    storage:
+      queueManager:
+        type: persistent-claim
+      defaultClass: lvms-vg1
+  version: 9.4.5.0-r2

@@ -1,0 +1,14 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: mq-client-svrconn
+spec:
+  host: mq2e-client2e-svrconn.chl.mq.ibm.com
+  to:
+    kind: Service
+    name: cp4iqm-ibm-mq
+    weight: 100
+  port:
+    targetPort: 1414
+  tls:
+    termination: passthrough

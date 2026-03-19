@@ -1,0 +1,8 @@
+DEFINE CHANNEL(MQ.CLIENT.SVRCONN) CHLTYPE(CLNTCONN) +
+TRPTYPE(TCP) +
+CONNAME('cp4iqm-ibm-mq-qm-cp4i.apps.openshift.yourcompany.com(443)') +
+QMNAME('cp4iqm') +
+SSLPEER('CN=mqserver,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US') +
+SSLCIPH('TLS_AES_128_GCM_SHA256') +
+CERTLABL('CN=mqclient,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US')
+
