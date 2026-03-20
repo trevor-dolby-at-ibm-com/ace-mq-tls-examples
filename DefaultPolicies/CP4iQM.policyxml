@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policies>
+  <policy policyType="MQEndpoint" policyName="CP4iQM" policyTemplate="MQEndpoint">
+    <connection>CLIENT</connection>
+    <destinationQueueManagerName>cp4iqm</destinationQueueManagerName>
+    <queueManagerHostname>cp4iqm-ibm-mq-qm-cp4i.apps.openshift.yourcompany.com</queueManagerHostname>
+    <listenerPortNumber>443</listenerPortNumber>
+    <channelName>MQ.CLIENT.SVRCONN</channelName>
+    <CCDTUrl></CCDTUrl>
+    <securityIdentity></securityIdentity>
+    <useSSL>true</useSSL>
+    <SSLPeerName></SSLPeerName>
+    <SSLCipherSpec>ANY_TLS13_OR_HIGHER</SSLCipherSpec>
+    <SSLCertificateLabel>CN=aceclient,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US</SSLCertificateLabel>
+    <MQApplName></MQApplName>
+    <reconnectOption>default</reconnectOption>
+  </policy>
+</policies>

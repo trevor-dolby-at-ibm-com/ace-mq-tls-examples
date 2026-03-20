@@ -1,0 +1,7 @@
+kind: Secret
+apiVersion: v1
+metadata:
+  name: mqserver-tls-trust
+data:
+  ca.crt: CACRTBASE64
+type: Opaque

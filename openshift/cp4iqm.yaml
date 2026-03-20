@@ -19,6 +19,12 @@ spec:
             - ca.crt
           secretName: mqserver-tls-secret
         name: mqserverkey
+    trust:
+      - name: mqservertrust
+        secret:
+          items:
+            - ca.crt
+          secretName: mqserver-tls-trust
   web:
     enabled: false
   queueManager:
