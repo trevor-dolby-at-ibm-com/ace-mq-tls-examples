@@ -184,4 +184,30 @@ https://www.ibm.com/docs/en/ibm-mq/9.4.x?topic=mqclientini-location-client-confi
 
 ## TLS SNI
 
+TLS has included the concept of a “Server Name Indicator” for a while, and this normally contains 
+the hostname of the server to which the connection is being made. This hostname may be one of many 
+hostnames that resolve to the same IP address, so the SNI hostname allows the server to determine
+which website (or service) the client is trying to reach before the TLS negotiation begins. This is 
+described in many places on the Internet with HTTPS as the primary example, including a GlobalSign
+blog post at https://www.globalsign.com/en/blog/what-is-server-name-indication among many others.
+
+### MQ SNI usage
+
+MQ by default populates the SNI field with an encoded form of the channel name rather than using 
+the hostname, and uses the channel name to choose between multiple server-side certificates: without
+the SNI information, there would be no way to choose which certificate to present to the incoming
+client. 
+
+The encoded form of a channel such as `MQ.CLIENT.SVRCONN` is `mq2e-client2e-svrconn.chl.mq.ibm.com`
+(see [mq-client-svrconn-route](/openshift/mq-client-svrconn-route.yaml)) because the SNI data must 
+follow hostname rules (so no "." characters in the channel name, etc) and the channel names must be
+transformed according to the rules described at https://www.ibm.com/docs/en/ibm-mq/9.4.x?topic=requirements-how-mq-provides-multiple-certificates-capability
+
+In practice, this looks as follows:
+
 ![mq-tls-sni-light](/pictures/mq-tls-sni-light.png#gh-light-mode-only)![mq-tls-sni-dark](/pictures/mq-tls-sni-dark.png#gh-dark-mode-only)
+
+Modern MQ clients can use the hostname SNI Route if they have been told to do so in `mqclient.ini`
+or elsewhere, while older clients may need to use the MQ encoded channel name Route. Note that the
+encoded channel names must be unique, so if two queue managers running in CP4i both have a channel
+named "DEFAULT.SVRCONN" then it is not possible to have both channels exposed to clients via Routes.
