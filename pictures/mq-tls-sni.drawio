@@ -1,0 +1,116 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.1 Chrome/142.0.7444.265 Electron/39.8.0 Safari/537.36" version="29.6.1">
+  <diagram name="Page-1" id="Gumlhk3xKF0sL7-S7Mnc">
+    <mxGraphModel dx="1328" dy="1123" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="NH5-podmmCzhYhdcFgaM-57" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#eeeeee;strokeColor=light-dark(#36393D,#FFFFFF);fontColor=light-dark(#000000,#000000);" value="Applications" vertex="1">
+          <mxGeometry height="194" width="210" x="60" y="96" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-58" parent="NH5-podmmCzhYhdcFgaM-57" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=light-dark(#000000,#000000);" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;MQ client&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="140" x="35" y="37.5" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-59" edge="1" parent="NH5-podmmCzhYhdcFgaM-57" source="NH5-podmmCzhYhdcFgaM-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;dashPattern=1 1;" target="NH5-podmmCzhYhdcFgaM-58">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-60" parent="NH5-podmmCzhYhdcFgaM-57" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontSize=11;fillColor=#ffe6cc;strokeColor=#d79b00;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;MQ Keystore&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="180" x="15" y="114" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-61" parent="NH5-podmmCzhYhdcFgaM-60" style="text;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;" value="&lt;span&gt;&lt;font style=&quot;color: light-dark(rgb(0, 128, 0), rgb(110, 255, 110));&quot;&gt;mqclient key+certificate&lt;/font&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="20" width="180" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-62" parent="NH5-podmmCzhYhdcFgaM-60" style="text;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;" value="&lt;span&gt;&lt;font style=&quot;color: light-dark(rgb(0, 128, 0), rgb(110, 255, 110));&quot;&gt;CA1 certificate&lt;/font&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="20" width="180" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-63" parent="1" style="container=1;collapsible=0;expand=0;recursiveResize=0;html=1;whiteSpace=wrap;strokeColor=light-dark(#EE0000,#EE0000);fillColor=none;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="250" width="310" x="470" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-64" parent="NH5-podmmCzhYhdcFgaM-63" style="shape=rect;fillColor=none;aspect=fixed;resizable=0;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;strokeColor=light-dark(#EE0000,#EE0000);part=1;spacingLeft=5;fontSize=14;" value="OpenShift" vertex="1">
+          <mxGeometry height="48" relative="1" width="48" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-65" parent="NH5-podmmCzhYhdcFgaM-64" style="fillColor=light-dark(#EE0000,#EE0000);shape=mxgraph.ibm_cloud.logo--openshift;strokeColor=none;dashed=0;outlineConnect=0;html=1;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;part=1;movable=0;resizable=0;rotatable=0;" value="" vertex="1">
+          <mxGeometry height="24" relative="1" width="24" as="geometry">
+            <mxPoint x="12" y="12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-66" parent="NH5-podmmCzhYhdcFgaM-63" style="shape=rect;fillColor=light-dark(#EE0000,#EE0000);aspect=fixed;resizable=0;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;strokeColor=none;part=1;spacingLeft=5;fontSize=14;" value="" vertex="1">
+          <mxGeometry height="48" relative="1" width="4" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-67" parent="NH5-podmmCzhYhdcFgaM-63" style="shape=mxgraph.ibm.box;prType=classic;fontStyle=0;verticalAlign=top;align=left;spacingLeft=32;spacingTop=4;fillColor=default;rounded=0;whiteSpace=wrap;html=1;strokeColor=#6C8EBF;strokeWidth=2;dashed=0;container=1;spacing=-4;collapsible=0;expand=0;recursiveResize=0;" value="&lt;span style=&quot;font-size: 16px;&quot;&gt;MQ QueueManager&lt;/span&gt;" vertex="1">
+          <mxGeometry height="179" width="195" x="100" y="61" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-68" parent="NH5-podmmCzhYhdcFgaM-67" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=light-dark(#000000,#000000);gradientColor=none;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;cp4iqm&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="132.75" x="31.12" y="29.51" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-69" edge="1" parent="NH5-podmmCzhYhdcFgaM-67" source="NH5-podmmCzhYhdcFgaM-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="NH5-podmmCzhYhdcFgaM-68" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-70" parent="NH5-podmmCzhYhdcFgaM-67" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontSize=11;fillColor=#ffe6cc;strokeColor=#d79b00;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;cp4iqm Keystore&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="160" x="17.5" y="79" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-71" parent="NH5-podmmCzhYhdcFgaM-70" style="text;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;" value="&lt;span&gt;&lt;font style=&quot;color: light-dark(rgb(0, 128, 0), rgb(110, 255, 110));&quot;&gt;mqserver key+certificate&lt;/font&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="20" width="160" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-72" parent="NH5-podmmCzhYhdcFgaM-70" style="text;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;" value="&lt;span&gt;&lt;font style=&quot;color: light-dark(rgb(0, 128, 0), rgb(110, 255, 110));&quot;&gt;CA1 certificate&lt;/font&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="20" width="160" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-73" edge="1" parent="NH5-podmmCzhYhdcFgaM-67" source="NH5-podmmCzhYhdcFgaM-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=1 1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="NH5-podmmCzhYhdcFgaM-68">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-80" y="140" as="sourcePoint" />
+            <mxPoint x="140" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-88" parent="NH5-podmmCzhYhdcFgaM-63" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeColor=light-dark(#0000FF,#38BCFF);dashed=1;spacingLeft=3;fontColor=#000000;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 255), rgb(56, 188, 255));&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;TLS termination happens at the queue manager&lt;/span&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="160" x="135" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-89" edge="1" parent="NH5-podmmCzhYhdcFgaM-63" source="NH5-podmmCzhYhdcFgaM-88" style="endArrow=none;html=1;rounded=0;strokeColor=light-dark(#0000FF,#38BCFF);strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=#000000;labelBackgroundColor=default;dashed=1;dashPattern=1 1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="NH5-podmmCzhYhdcFgaM-68" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="150" y="-34" as="sourcePoint" />
+            <mxPoint x="110" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-79" edge="1" parent="1" source="NH5-podmmCzhYhdcFgaM-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" target="NH5-podmmCzhYhdcFgaM-76">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-80" parent="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" value="&lt;span style=&quot;font-size: 10px;&quot;&gt;443&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="30" x="280" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-76" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#FF8000;strokeWidth=2;" value="HTTPS Routes&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="160" width="210" x="320" y="111" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-77" edge="1" parent="1" source="NH5-podmmCzhYhdcFgaM-76" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" target="NH5-podmmCzhYhdcFgaM-68">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="550" y="191" />
+              <mxPoint x="550" y="156" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-82" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=light-dark(#000000,#FFFFFF);strokeWidth=2;dashed=1;dashPattern=1 1;" value="&amp;nbsp;mq2e-client2e-svrconn .chl.mq.ibm.com-" vertex="1">
+          <mxGeometry height="40" width="180" x="335" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-83" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#7EA6E0;strokeWidth=2;" value="cp4iqm-ibm-mq-qm-cp4i .apps.openshift.company.com" vertex="1">
+          <mxGeometry height="40" width="180" x="335" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-84" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeColor=light-dark(#0000FF,#38BCFF);dashed=1;spacingLeft=3;fontColor=#000000;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 255), rgb(56, 188, 255));&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Matches MQ channel name SNI data&lt;/span&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="135" x="300" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-85" edge="1" parent="1" source="NH5-podmmCzhYhdcFgaM-84" style="endArrow=none;html=1;rounded=0;strokeColor=light-dark(#0000FF,#38BCFF);strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=#000000;labelBackgroundColor=default;dashed=1;dashPattern=1 1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="NH5-podmmCzhYhdcFgaM-82" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="300" y="86" as="sourcePoint" />
+            <mxPoint x="360" y="96" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-86" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeColor=light-dark(#0000FF,#38BCFF);dashed=1;spacingLeft=3;fontColor=#000000;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 255), rgb(56, 188, 255));&quot;&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Matches queue manager hostname SNI data&lt;/span&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="170" x="250" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="NH5-podmmCzhYhdcFgaM-87" edge="1" parent="1" source="NH5-podmmCzhYhdcFgaM-86" style="endArrow=none;html=1;rounded=0;strokeColor=light-dark(#0000FF,#38BCFF);strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=#000000;labelBackgroundColor=default;dashed=1;dashPattern=1 1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.301;entryY=0.122;entryDx=0;entryDy=0;entryPerimeter=0;" target="NH5-podmmCzhYhdcFgaM-83" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="310" y="96" as="sourcePoint" />
+            <mxPoint x="400" y="152" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
