@@ -1,10 +1,11 @@
 # MQ in CP4i (OpenShift)
 
-Running queue managers in OpenShift changes the challenges when using TLS with MQ channels. The
-connectivity into OpenShift is normally via ingress Routes, and for non-HTTP traffic these work
-best with TLS. MQ channels can use the same TLS-based ingress as HTTPS traffic does, and the MQ
-operator will (if asked) create "TLS passthrough" Routes automatically for queue managers. This
-leads to something like this:
+Running queue managers in OpenShift changes the challenges when using TLS with MQ channels, but the 
+basic principles are the same. The connectivity into OpenShift is normally via ingress Routes, and
+for non-HTTP traffic these work best with TLS. MQ channels can use the same TLS-based ingress as HTTPS
+traffic does, and the MQ operator will (if asked) create "TLS passthrough" Routes automatically for
+queue managers. This leads to something like this:
+
 ![mq-cp4i-light](/pictures/mq-cp4i-light.png#gh-light-mode-only)![mq-cp4i-dark](/pictures/mq-cp4i-dark.png#gh-dark-mode-only)
 
 The MQ clients connect to the standard HTTPS port 443, and the OpenShift ingress will send the
@@ -14,8 +15,8 @@ use the standard MQ port 1414 and do not have to use TLS.
 ## MQ server configuration
 
 The [create-pki.sh](/create-pki.sh) and [create-openshift.sh](/openshift/create-openshift.sh) scripts
-will create the required keys, keystores, and OpenShift YAML that are needed to create the queue 
-manager. Before running the scripts, the [cp4iqm-ccdt.json](/openshift/cp4iqm-ccdt.json) and
+will create the required keys, keystores, and OpenShift YAML files that are needed to create the
+queue manager. Before running the scripts, the [cp4iqm-ccdt.json](/openshift/cp4iqm-ccdt.json) and
 [cp4iqm-ccdt-define.mqsc](/openshift/cp4iqm-ccdt-define.mqsc) should be adjusted to reflect the
 correct external DNS name for the cluster ingress.
 
@@ -78,6 +79,29 @@ has the password "stashed" with the keystore so no password needs to be provided
 the PKCS12 file does not have a stashed password, so the `MQKEYRPWD` environment variable is used
 to provide the password.
 
+### Keystore listing
+
+The `runmqakm` command can be helpful in understanding what keys and CA certificates are present
+in a keystore, as it has a `list` option:
+```
+$ /opt/mqm/bin/runmqakm -cert -list -pw changeit -db generated-output/ace-p12/aceclient-plus-CA1.p12
+Certificates found
+* default, - personal, ! trusted, # secret key
+!       CN=ace-demo-CA2,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US
+!       CN=ace-demo-CA1,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US
+-       CN=aceclient,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US
+```
+and similarly for KDB:
+```
+$ /opt/mqm/bin/runmqakm -cert -list -db generated-output/mq-kdb/qm.kdb -stashed -v
+Certificates found
+* default, - personal, ! trusted, # secret key
+!       CN=ace-demo-CA1,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US  CN=ace-demo-CA1,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US  CN=ace-demo-CA1,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US
+!       CN=ace-demo-CA2,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US  CN=ace-demo-CA2,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US  CN=ace-demo-CA2,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US
+-       CN=mqserver,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US  CN=mqserver,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US  CN=ace-demo-CA1,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US
+```
+Note that the `-v` option would cause the first command to display the same verbose output as the second.
+
 ### MQ client examples
 
 Using channel tables and KDB keystores:
@@ -98,11 +122,12 @@ export MQSSLKEYR=/home/tdolby/github.com/ace-mq-tls-examples/generated-output/mq
 ## ACE configuration
 
 Connecting to the queue manager from ACE is very similar to other MQ clients:
+
 ![ace-mq-cp4i-light](/pictures/ace-mq-cp4i-light.png#gh-light-mode-only)![ace-mq-cp4i-dark](/pictures/ace-mq-cp4i-dark.png#gh-dark-mode-only)
 
-For ACE, the key configuration settings are in the MQEndpoint policy (or possibly on MQ nodes). The
-[CP4iQM](/DefaultPolicies/CP4iQM.policyxml) policy file shows the configuration, with the host and port
-pointing to the OpenShift ingress on port 443 abd the certificate label pointing to `aceclient`:
+For ACE, the important configuration settings are in the MQEndpoint policy (or possibly on MQ nodes). 
+The [CP4iQM](/DefaultPolicies/CP4iQM.policyxml) policy file shows the configuration, with the host 
+and port pointing to the OpenShift ingress on port 443 and the certificate label pointing to `aceclient`:
 ```
     <destinationQueueManagerName>cp4iqm</destinationQueueManagerName>
     <queueManagerHostname>cp4iqm-ibm-mq-qm-cp4i.apps.openshift.yourcompany.com</queueManagerHostname>
@@ -147,7 +172,9 @@ the userids presented (as shown [here](https://www.ibm.com/docs/en/ibm-mq/9.4.x?
 ### Client configuration for SNI
 
 Although MQ can work without using the hostname for SNI data (see below), the OpenShift Route
-configuration is simpler when hostnames are used. Adding
+configuration is simpler when hostnames are used and this is possible starting at 
+[MQ 9.2.1](https://www.ibm.com/docs/en/ibm-mq/9.2.x?topic=mqclientini-ssl-stanza-client-configuration-file#q016900___tlsoutsni).
+Adding the following 
 ```
 SSL:
    OutboundSNI = HOSTNAME
