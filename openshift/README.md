@@ -184,7 +184,7 @@ https://www.ibm.com/docs/en/ibm-mq/9.4.x?topic=mqclientini-location-client-confi
 
 ## TLS SNI
 
-TLS has included the concept of a “Server Name Indicator” for a while, and this normally contains 
+TLS has included the concept of a “Server Name Indication” for a while, and this normally contains 
 the hostname of the server to which the connection is being made. This hostname may be one of many 
 hostnames that resolve to the same IP address, so the SNI hostname allows the server to determine
 which website (or service) the client is trying to reach before the TLS negotiation begins. This is 
