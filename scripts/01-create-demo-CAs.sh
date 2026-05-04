@@ -6,10 +6,20 @@ set -e
 set -x
 
 mkdir generated-output/ace-demo-CA1
-openssl req -x509 -passout pass:changeit -subj "/C=US/ST=MN/L=Minneapolis/O=IBM/OU=ExpertLabs/CN=ace-demo-CA1" -sha256 -days 1825 -newkey rsa:4096 -keyout generated-output/ace-demo-CA1/ace-demo-CA1.key -out generated-output/ace-demo-CA1/ace-demo-CA1.crt
-cat generated-output/ace-demo-CA1/ace-demo-CA1.key | openssl rsa -noout -text -passin pass:changeit
+openssl genpkey -algorithm ec -pkeyopt ec_paramgen_curve:P-256 -out generated-output/ace-demo-CA1/ace-demo-CA1.key
+openssl req -x509 -passout pass:changeit -subj "/C=US/ST=MN/L=Minneapolis/O=IBM/OU=ExpertLabs/CN=ace-demo-CA1" -sha256 -addext keyUsage=critical,keyCertSign,cRLSign -days 1825 -new -key generated-output/ace-demo-CA1/ace-demo-CA1.key -out generated-output/ace-demo-CA1/ace-demo-CA1.crt
+cat generated-output/ace-demo-CA1/ace-demo-CA1.key | openssl ec -noout -text -passin pass:changeit
+
+#openssl req -x509 -passout pass:changeit -subj "/C=US/ST=MN/L=Minneapolis/O=IBM/OU=ExpertLabs/CN=ace-demo-CA1" -sha256 -days 1825 -newkey rsa:4096 -keyout generated-output/ace-demo-CA1/ace-demo-CA1.key -out generated-output/ace-demo-CA1/ace-demo-CA1.crt
+#cat generated-output/ace-demo-CA1/ace-demo-CA1.key | openssl rsa -noout -text -passin pass:changeit
 cat generated-output/ace-demo-CA1/ace-demo-CA1.crt | openssl x509 -noout -text
 mkdir generated-output/ace-demo-CA2
-openssl req -x509 -passout pass:changeit -subj "/C=US/ST=MN/L=Minneapolis/O=IBM/OU=ExpertLabs/CN=ace-demo-CA2" -sha256 -days 1825 -newkey rsa:4096 -keyout generated-output/ace-demo-CA2/ace-demo-CA2.key -out generated-output/ace-demo-CA2/ace-demo-CA2.crt
-cat generated-output/ace-demo-CA2/ace-demo-CA2.key | openssl rsa -noout -text -passin pass:changeit
+
+
+openssl genpkey -algorithm ec -pkeyopt ec_paramgen_curve:P-256 -out generated-output/ace-demo-CA2/ace-demo-CA2.key
+openssl req -x509 -passout pass:changeit -subj "/C=US/ST=MN/L=Minneapolis/O=IBM/OU=ExpertLabs/CN=ace-demo-CA2" -sha256 -addext keyUsage=critical,keyCertSign,cRLSign -days 1825 -new -key generated-output/ace-demo-CA2/ace-demo-CA2.key -out generated-output/ace-demo-CA2/ace-demo-CA2.crt
+cat generated-output/ace-demo-CA2/ace-demo-CA2.key | openssl ec -noout -text -passin pass:changeit
+
+#openssl req -x509 -passout pass:changeit -subj "/C=US/ST=MN/L=Minneapolis/O=IBM/OU=ExpertLabs/CN=ace-demo-CA2" -sha256 -days 1825 -newkey rsa:4096 -keyout generated-output/ace-demo-CA2/ace-demo-CA2.key -out generated-output/ace-demo-CA2/ace-demo-CA2.crt
+#cat generated-output/ace-demo-CA2/ace-demo-CA2.key | openssl rsa -noout -text -passin pass:changeit
 cat generated-output/ace-demo-CA2/ace-demo-CA2.crt | openssl x509 -noout -text

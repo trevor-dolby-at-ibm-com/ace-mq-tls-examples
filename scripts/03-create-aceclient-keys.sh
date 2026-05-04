@@ -7,16 +7,19 @@ set -x
 
 # CN=aceclient,OU=ExpertLabs,O=IBM,L=Minneapolis,ST=MN,C=US 
 mkdir generated-output/aceclient-keys
-openssl req -newkey rsa:4096 -subj "/C=US/ST=MN/L=Minneapolis/O=IBM/OU=ExpertLabs/CN=aceclient"  -keyout generated-output/aceclient-keys/aceclient.key -out generated-output/aceclient-keys/aceclient.csr -passout pass:changeit
+openssl req -new -newkey ec -pkeyopt ec_paramgen_curve:P-256 -subj "/C=US/ST=MN/L=Minneapolis/O=IBM/OU=ExpertLabs/CN=aceclient"  -keyout generated-output/aceclient-keys/aceclient.key -out generated-output/aceclient-keys/aceclient.csr -passout pass:changeit
+#openssl req -newkey rsa:4096 -subj "/C=US/ST=MN/L=Minneapolis/O=IBM/OU=ExpertLabs/CN=aceclient"  -keyout generated-output/aceclient-keys/aceclient.key -out generated-output/aceclient-keys/aceclient.csr -passout pass:changeit
 
 openssl x509 -req -CA generated-output/ace-demo-CA2/ace-demo-CA2.crt -CAkey generated-output/ace-demo-CA2/ace-demo-CA2.key -in generated-output/aceclient-keys/aceclient.csr -out generated-output/aceclient-keys/aceclient.crt -days 365 -CAcreateserial  -passin pass:changeit
 openssl x509 -in generated-output/aceclient-keys/aceclient.crt -outform der -out generated-output/aceclient-keys/aceclient.der
 
-openssl rsa -out generated-output/aceclient-keys/aceclient-decrypted.key -in generated-output/aceclient-keys/aceclient.key -passin pass:changeit
+openssl ec -out generated-output/aceclient-keys/aceclient-decrypted.key -in generated-output/aceclient-keys/aceclient.key -passin pass:changeit
+#openssl rsa -out generated-output/aceclient-keys/aceclient-decrypted.key -in generated-output/aceclient-keys/aceclient.key -passin pass:changeit
 
 openssl pkcs12 -chain -CAfile generated-output/ace-demo-CA2/ace-demo-CA2.crt -inkey generated-output/aceclient-keys/aceclient.key -in generated-output/aceclient-keys/aceclient.crt -export -out generated-output/aceclient-keys/aceclient.p12 -passin pass:changeit -passout pass:changeit  -legacy
 
-cat generated-output/aceclient-keys/aceclient.key | openssl rsa -noout -text -passin pass:changeit
+cat generated-output/aceclient-keys/aceclient.key | openssl ec -noout -text -passin pass:changeit
+#cat generated-output/aceclient-keys/aceclient.key | openssl rsa -noout -text -passin pass:changeit
 cat generated-output/aceclient-keys/aceclient.crt | openssl x509 -noout -text
 
 /opt/mqm/bin/runmqakm -cert -list -db generated-output/aceclient-keys/aceclient.p12 -pw changeit
